@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!--去掉注释-->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!--需要配置数据库连接-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://106.15.205.155:3306/wuai?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false"
+                        userId="root"
+                        password="xltys1995">
+        </jdbcConnection>
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!--指定javaBean生成的位置 javaBean生成的位置-->
+        <javaModelGenerator targetPackage="com.cool.boot.entity" targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!--sql映射文件生成的位置-->
+        <sqlMapGenerator targetPackage="Mapper"  targetProject="./src/main/resources/Mapper">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!--指定dao接口生成的位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.cool.boot.mapper"  targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!--table是指定每个表的生成策略-->
+        <table tableName="t_tryst_easemob" domainObjectName="TrystEasemob"/>
+
+
+    </context>
+</generatorConfiguration>

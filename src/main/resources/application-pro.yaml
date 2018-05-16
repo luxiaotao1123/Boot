@@ -1,0 +1,29 @@
+spring:
+  redis:
+      host: 120.55.67.48
+      port: 8048
+      database: 3
+      password: nessary
+
+jdbc:
+  url: jdbc:mysql://106.15.205.155:3306/wuai?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&verifyServerCertificate=false
+  user: root
+  pass: xltys1995
+
+rabbit:
+  host: 106.15.205.155
+  name: guest
+  pass: guest
+
+redis:
+  host: 120.55.67.48
+  port: 8048
+  database: 1
+  password: nessary
+
+tcp:
+  port: 5006
+
+logging:
+  config: classpath:logback-spring.xml
+  path: C:\Users\Administrator\Desktop\mylog
