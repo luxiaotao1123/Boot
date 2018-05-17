@@ -14,7 +14,7 @@ public class GeneratorUtils {
     public static void main(String[] args)throws Exception {
         List<String> warnings = new ArrayList<String>();
         boolean overwrite = true;
-        File configFile = new File("E:\\moduls\\commons\\src\\main\\resources\\generatorConfig.xml");
+        File configFile = new File("F:\\Cool\\src\\main\\resources\\generatorConfig.xml");
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = cp.parseConfiguration(configFile);
         DefaultShellCallback callback = new DefaultShellCallback(overwrite);

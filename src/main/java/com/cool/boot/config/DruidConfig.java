@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
  * @Auth Vincent
  */
 @Configuration
-public class DruidConfiguration {
+public class DruidConfig {
 
     @Bean
     public ServletRegistrationBean statViewServlet(){

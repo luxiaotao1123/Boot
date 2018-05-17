@@ -10,3 +10,6 @@ mybatis:
   configuration:
       mapUnderscoreToCamelCase: true
       cache-enabled: true
+
+application:
+  name: cool-boot

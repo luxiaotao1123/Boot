@@ -2,8 +2,10 @@ package com.cool.boot.service.impl;
 
 import com.alibaba.fastjson.JSON;
 
+import com.cool.boot.config.ExecutorsConfig;
 import com.cool.boot.entity.Response;
 import com.cool.boot.entity.Task;
+import com.cool.boot.enums.ExecutorsEnum;
 import com.cool.boot.enums.RabbitTypeEnum;
 import com.cool.boot.enums.ScheduleOperaEnum;
 import com.cool.boot.message.RabbitMqPublishImpl;
@@ -31,6 +33,9 @@ public class FirstServiceImpl implements FirstService {
     @Resource
     private ValueOperations<String, String> myValueOperations;
 
+    @Resource
+    private ExecutorsConfig executors;
+
     @Override
     public Response hello() {
         /*Task task = new Task();
@@ -44,12 +49,30 @@ public class FirstServiceImpl implements FirstService {
         data.setData(JSON.toJSONString(task));
         data.setRabbitTypeEnum(RabbitTypeEnum.TASK);
         rabbitMqPublish.publish(data);
-        myValueOperations.set("data","hello world");*/
+        myValueOperations.set("data","hello world");
 
         log.error("error" + new Date().toString());
         log.warn("warn" + new Date().toString());
         log.info("info" + new Date().toString());
-        log.debug("debug" + new Date().toString());
+        log.debug("debug" + new Date().toString());*/
+
+        ExecutorsEnum coolExecutors = ExecutorsEnum.getExecutorsEnum("coolExecutors");
+
+        executors.getSingle(coolExecutors).execute(new Test());
+
         return Response.ok();
+    }
+
+    class Test implements Runnable{
+
+        @Override
+        public void run() {
+            System.out.println("==================================================================");
+            System.out.println("==================================================================");
+            System.out.println("==============================COOL================================");
+            System.out.println("==================================================================");
+            System.out.println("==================================================================");
+
+        }
     }
 }
