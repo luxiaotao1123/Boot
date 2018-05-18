@@ -1,9 +1,9 @@
 spring:
-  redis:
-      host: 120.55.67.48
-      port: 8048
-      database: 3
-      password: nessary
+  datasource:
+      url: jdbc:mysql://47.52.195.163:3306/wuai?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&verifyServerCertificate=false
+      driver-class-name: com.mysql.jdbc.Driver
+      username: root
+      password: tengjunjiesb
 
 jdbc:
   url: jdbc:mysql://106.15.205.155:3306/wuai?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&verifyServerCertificate=false
@@ -22,8 +22,18 @@ redis:
   password: nessary
 
 tcp:
-  port: 5006
+  port: 5005
 
 logging:
   config: classpath:logback-spring.xml
   path: C:\Users\Administrator\Desktop\mylog
+
+demo:
+  queue:  cool.pro.queue.demo
+  exchange: cool.pro.exchange.demo
+  routingKey: cool.pro.routingKey.demo
+
+task:
+  queue:  cool.pro.queue.task
+  exchange: cool.pro.exchange.task
+  routingKey: cool.pro.routingKey.task

@@ -6,9 +6,9 @@ spring:
       password: tengjunjiesb
 
 jdbc:
-   url: jdbc:mysql://106.15.205.155:3306/wuai?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&verifyServerCertificate=false
-   user: root
-   pass: xltys1995
+  url: jdbc:mysql://106.15.205.155:3306/wuai?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&verifyServerCertificate=false
+  user: root
+  pass: xltys1995
 
 rabbit:
   host: 106.15.205.155
@@ -27,3 +27,16 @@ tcp:
 logging:
   config: classpath:logback-spring.xml
   path: C:\Users\Administrator\Desktop\mylog
+
+demo:
+  queue:  cool.dev.queue.demo
+  exchange: cool.dev.exchange.demo
+  routingKey: cool.dev.routingKey.demo
+
+task:
+  queue:  cool.dev.queue.task
+  exchange: cool.dev.exchange.task
+  routingKey: cool.dev.routingKey.task
+
+
+

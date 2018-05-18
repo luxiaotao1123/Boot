@@ -15,7 +15,6 @@ import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConversionException;
 import org.springframework.amqp.support.converter.MessageConverter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,18 +24,24 @@ import java.io.UnsupportedEncodingException;
 
 /**
  * rabbitMq的配置
- * @Auth Vincent
+ * @author  Vincent
  */
 @Configuration
 public class RabbitMqConfig {
 
-    private final String DEMO_QUEUE = "queue.fanout.demo";
-    private final String DEMO_EXCHANGE = "exchange.fanout.demo";
-    private final String DEMO_ROUTINGKEY = "routingKey.fanout.demo";
+    @Value("${demo.queue}")
+    private String DEMO_QUEUE;
+    @Value("${demo.exchange}")
+    private String DEMO_EXCHANGE;
+    @Value("${demo.routingKey}")
+    private String DEMO_ROUTINGKEY;
 
-    private final String TASK_QUEUE = "wuai.queue.fanout.task";
-    private final String TASK_EXCHANGE = "wuai.exchange.fanout.task";
-    private final String TASK_ROUTINGKEY = "wuai.routingKey.fanout.task";
+    @Value("${task.queue}")
+    private String TASK_QUEUE;
+    @Value("${task.exchange}")
+    private String TASK_EXCHANGE;
+    @Value("${task.routingKey}")
+    private String TASK_ROUTINGKEY;
 
 
     @Resource
@@ -181,7 +186,7 @@ public class RabbitMqConfig {
                 String msg = null;
                 try {
                     msg = new String(message.getBody(), "utf-8");
-                } catch (UnsupportedEncodingException e) {
+                } catch (UnsupportedEncodingException ignored) {
 
                 }
                 if (StringUtils.isEmpty(msg)) {
@@ -193,6 +198,7 @@ public class RabbitMqConfig {
         });
         return adapter;
     }
+
 
     private SimpleMessageListenerContainer createContainer(RabbitTypeEnum RabbitTypeEnum) {
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
@@ -212,6 +218,7 @@ public class RabbitMqConfig {
         container.setMessageConverter(new Jackson2JsonMessageConverter());
         return container;
     }
+
 
     private RabbitTemplate createRabbitTemplate(RabbitTypeEnum RabbitTypeEnum) {
         RabbitTemplate rabbitTemplate = new RabbitTemplate();
