@@ -28,15 +28,5 @@ logging:
   config: classpath:logback-spring.xml
   path: C:\Users\Administrator\Desktop\mylog
 
-demo:
-  queue:  cool.dev.queue.demo
-  exchange: cool.dev.exchange.demo
-  routingKey: cool.dev.routingKey.demo
-
-task:
-  queue:  cool.dev.queue.task
-  exchange: cool.dev.exchange.task
-  routingKey: cool.dev.routingKey.task
-
 
 

@@ -29,19 +29,13 @@ import java.io.UnsupportedEncodingException;
 @Configuration
 public class RabbitMqConfig {
 
-    @Value("${demo.queue}")
-    private String DEMO_QUEUE;
-    @Value("${demo.exchange}")
-    private String DEMO_EXCHANGE;
-    @Value("${demo.routingKey}")
-    private String DEMO_ROUTINGKEY;
+    private String DEMO_QUEUE = "cool.quartz.queue.demo";
+    private String DEMO_EXCHANGE = "cool.quartz.exchange.demo";;
+    private String DEMO_ROUTINGKEY = "cool.quartz.routingKey.demo";
 
-    @Value("${task.queue}")
-    private String TASK_QUEUE;
-    @Value("${task.exchange}")
-    private String TASK_EXCHANGE;
-    @Value("${task.routingKey}")
-    private String TASK_ROUTINGKEY;
+    private String TASK_QUEUE = "cool.quartz.queue.task";
+    private String TASK_EXCHANGE = "cool.quartz.exchange.task";
+    private String TASK_ROUTINGKEY = "cool.quartz.routingKey.task";;
 
 
     @Resource
@@ -65,7 +59,7 @@ public class RabbitMqConfig {
     private Queue demoQueue;
 
     @Bean("demoQueue")
-    public Queue createTrystQueue() {
+    public Queue createDemoQueue() {
 
         return new Queue(DEMO_QUEUE);
     }
