@@ -17,10 +17,10 @@ import org.springframework.stereotype.Component;
  * timTask的监听类
  * @Auth Vincent
  */
-@Component
-public class TaskListenter implements TaskSubscriber {
+@Component("taskSubscriber")
+public class TaskListener implements TaskSubscriber {
 
-    private Logger logger = LoggerFactory.getLogger(TaskListenter.class);
+    private Logger logger = LoggerFactory.getLogger(TaskListener.class);
 
     @Autowired
     private TaskBus taskBus;

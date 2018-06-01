@@ -26,4 +26,5 @@ tcp:
 
 logging:
   config: classpath:logback-spring.xml
-  path: /stock/logs/cool-log/
+  path: /run/tmp/logs/
+

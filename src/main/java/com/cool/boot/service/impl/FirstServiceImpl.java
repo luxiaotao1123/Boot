@@ -38,7 +38,7 @@ public class FirstServiceImpl implements FirstService {
 
     @Override
     public Response hello() {
-        /*Task task = new Task();
+        Task task = new Task();
         task.setScheduleOperaEnum(ScheduleOperaEnum.ADD_TASK);
         String uuid = UUID.randomUUID().toString();
         task.setTaskName("demo:"+uuid);
@@ -49,7 +49,7 @@ public class FirstServiceImpl implements FirstService {
         data.setData(JSON.toJSONString(task));
         data.setRabbitTypeEnum(RabbitTypeEnum.TASK);
         rabbitMqPublish.publish(data);
-        myValueOperations.set("data","hello world");
+        /*myValueOperations.set("data","hello world");
 
         log.error("error" + new Date().toString());
         log.warn("warn" + new Date().toString());

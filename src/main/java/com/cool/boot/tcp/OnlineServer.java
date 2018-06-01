@@ -3,6 +3,7 @@ package com.cool.boot.tcp;
 
 import com.cool.boot.tcp.coder.JSONDecoder;
 import com.cool.boot.tcp.coder.JSONEncoder;
+import com.cool.boot.tcp.test.OnlineServerHandlerTwo;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
@@ -20,7 +21,7 @@ import javax.annotation.PreDestroy;
 
 /**
  * TCP长连接Server
- * @Auth Vincent
+ * @author  Vincent
  */
 @Component
 @Slf4j

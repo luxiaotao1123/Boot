@@ -3,6 +3,7 @@ package com.cool.boot.config;
 import com.cool.boot.enums.ExecutorsEnum;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.EnumMap;
@@ -16,6 +17,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 总线程池
  */
 @Component("executors")
+@Order(0)
 public class ExecutorsConfig implements DisposableBean {
 
     @Value("${application.name}")

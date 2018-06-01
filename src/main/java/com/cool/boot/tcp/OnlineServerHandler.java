@@ -44,6 +44,14 @@ public class OnlineServerHandler extends SimpleChannelInboundHandler<String> {
     }
 
     /*
+        连接初始化
+     */
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) {
+        ctx.fireChannelActive();
+    }
+
+    /*
         消息格式:   token:msg
      */
     @Override
@@ -126,7 +134,6 @@ public class OnlineServerHandler extends SimpleChannelInboundHandler<String> {
         },20, TimeUnit.SECONDS);
     }
 
-
     /*
         视频通话钻石不足提醒
      */
@@ -153,6 +160,25 @@ public class OnlineServerHandler extends SimpleChannelInboundHandler<String> {
         }
         channel.writeAndFlush(JSON.toJSONString(TCPMsgResponse.error(TCPStatusEnum.NO_DIAMONDS.getCode(),TCPStatusEnum.NO_DIAMONDS.getValue())));
         return true;
+    }
+
+    /*
+        广播
+     */
+    public static boolean topLineBroadCast(String msg){
+
+        Boolean res = false;
+        try {
+
+            for (Map.Entry<Integer, ChannelCache> arg : onlineUsers.entrySet()){
+                arg.getValue().getChannel().writeAndFlush(msg);
+            }
+            res = true;
+        }catch (Exception ignore){
+
+            log.error("broadCast throw error");
+        }
+        return res;
     }
 
 }

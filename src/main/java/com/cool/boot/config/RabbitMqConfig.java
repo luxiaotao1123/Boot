@@ -29,6 +29,10 @@ import java.io.UnsupportedEncodingException;
 @Configuration
 public class RabbitMqConfig {
 
+    public final static String TOPLINE_EXCHANGE = "top.line.exchange";
+    public final static String TOPLINE_QUEUE = "top.line.queue";
+    public final static String TOPLINE_ROUTINGKEY = "top.line.routingKey";
+
     private String DEMO_QUEUE = "cool.quartz.queue.demo";
     private String DEMO_EXCHANGE = "cool.quartz.exchange.demo";;
     private String DEMO_ROUTINGKEY = "cool.quartz.routingKey.demo";
@@ -50,6 +54,30 @@ public class RabbitMqConfig {
         factory.setPassword(pass);
         return factory;
 
+    }
+
+    @Bean("rabbitPush")
+    public RabbitTemplate createTopLineRabbitPush(){
+        RabbitTemplate rabbitTemplate = new RabbitTemplate();
+        rabbitTemplate.setConnectionFactory(factory);
+        return rabbitTemplate;
+    }
+
+    /***************************************************topLine*********************************************************/
+
+    @Bean
+    public DirectExchange topDirectExchange(){
+        return new DirectExchange(TOPLINE_EXCHANGE);
+    }
+
+    @Bean
+    public Queue topQueue(){
+        return new Queue(TOPLINE_QUEUE);
+    }
+
+    @Bean
+    public Binding topBinding(){
+        return BindingBuilder.bind(topQueue()).to(topDirectExchange()).with(TOPLINE_ROUTINGKEY);
     }
 
     /*
@@ -158,7 +186,6 @@ public class RabbitMqConfig {
         return createRabbitTemplate(RabbitTypeEnum.TASK);
 
     }
-
 
 
     private MessageListenerAdapter createAdaptor(Object object, TransferData data) {
