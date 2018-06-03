@@ -1,5 +1,9 @@
 package com.cool.boot.design.observer;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class ConSubject extends Subject {
 
     private String msg;
@@ -18,4 +22,5 @@ public class ConSubject extends Subject {
        this.notifyObservers(msg);
 
     }
+
 }

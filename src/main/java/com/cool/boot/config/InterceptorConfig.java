@@ -64,7 +64,7 @@ public class InterceptorConfig extends WebMvcConfigurerAdapter {
 
             if (StringUtils.isEmpty(token)) {
                 logger.warn("Ip={}没有token进行访问", Iptools.gainRealIp(request));
-                request.setAttribute(Response.CODE, HttpStatusEnum.TOKEN_ERROR.getCode());
+                request.setAttribute(Response.STATUS, HttpStatusEnum.TOKEN_ERROR.getCode());
                 return false;
             }
 
@@ -72,13 +72,13 @@ public class InterceptorConfig extends WebMvcConfigurerAdapter {
 
             if (tokenValueRedisTemplate.size(String.format(TOKEN_CASH,id))==0 || !token.equals(tokenValueRedisTemplate.get(String.format(TOKEN_CASH,id)))){
                 logger.warn("Ip={}的token验证失败", Iptools.gainRealIp(request));
-                request.setAttribute(Response.CODE, HttpStatusEnum.TOKEN_ERROR.getCode());
+                request.setAttribute(Response.STATUS, HttpStatusEnum.TOKEN_ERROR.getCode());
                 return false;
             }
 
             if (id == null) {
                 logger.warn("token={}解析id不正确", token);
-                request.setAttribute(Response.CODE, HttpStatusEnum.TOKEN_ERROR.getCode());
+                request.setAttribute(Response.STATUS, HttpStatusEnum.TOKEN_ERROR.getCode());
                 return false;
             }
 
@@ -174,7 +174,7 @@ public class InterceptorConfig extends WebMvcConfigurerAdapter {
 
             if (StringUtils.isEmpty(ip)) {
                 logger.warn("空Ip地址正在进行访问......");
-                res.setAttribute(Response.CODE, HttpStatusEnum.TOKEN_ERROR.getCode());
+                res.setAttribute(Response.STATUS, HttpStatusEnum.TOKEN_ERROR.getCode());
                 return false;
 
             } else {
@@ -203,7 +203,7 @@ public class InterceptorConfig extends WebMvcConfigurerAdapter {
 
                 if (intervalTime < ACCESS_INTERVAL_TIMES && accessRecord.getAccessTimes() > ACCESS_FORBIDDEN_TIMES) {
                     logger.warn("ip{} 时间间隔 {} 毫秒 访问路径={}, {} 次 ,已拦截 ", ip, intervalTime, res.getRequestURI(), accessRecord.getAccessTimes());
-                    res.setAttribute(Response.CODE, HttpStatusEnum.TOKEN_ERROR.getCode());
+                    res.setAttribute(Response.STATUS, HttpStatusEnum.TOKEN_ERROR.getCode());
                     return false;
 
                 }

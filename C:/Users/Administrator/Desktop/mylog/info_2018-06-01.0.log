@@ -1,0 +1,112 @@
+21:00:51.643 [main] INFO  com.cool.boot.Boot - Starting Boot on AppledeMacBook.local with PID 13309 (/Users/apple/Documents/Boot/out/production/classes started by apple in /Users/apple/Documents/Boot) 
+21:00:51.655 [main] INFO  com.cool.boot.Boot - The following profiles are active: dev 
+21:00:52.169 [main] INFO  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2a7686a7: startup date [Fri Jun 01 21:00:52 CST 2018]; root of context hierarchy 
+21:00:58.680 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode! 
+21:01:01.234 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$4f83a16d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+21:01:01.359 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$8917e33f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+21:01:02.151 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9090 (http) 
+21:01:02.346 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat] 
+21:01:02.348 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.31 
+21:01:02.380 [localhost-startStop-1] INFO  o.a.c.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/apple/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.] 
+21:01:02.630 [localhost-startStop-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext 
+21:01:02.630 [localhost-startStop-1] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 10461 ms 
+21:01:02.904 [localhost-startStop-1] INFO  o.s.b.w.s.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*] 
+21:01:02.907 [localhost-startStop-1] INFO  o.s.b.w.s.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/] 
+21:01:02.920 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*] 
+21:01:02.921 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*] 
+21:01:02.921 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*] 
+21:01:02.922 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*] 
+21:01:02.922 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*] 
+21:01:04.452 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor 
+21:01:04.458 [main] INFO  org.quartz.simpl.SimpleThreadPool - Job execution threads will use class loader of thread: main 
+21:01:04.481 [main] INFO  o.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl 
+21:01:04.481 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.2.3 created. 
+21:01:04.482 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized. 
+21:01:04.484 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+ 
+21:01:04.484 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties' 
+21:01:04.485 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.2.3 
+21:01:04.486 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: com.cool.boot.utils.TaskBus$1@5700c9db 
+21:01:04.588 [main] INFO  com.cool.boot.utils.TaskBus - 开始初始化定时任务... 
+21:01:04.654 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting... 
+21:01:07.067 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed. 
+21:01:07.192 [main] INFO  com.cool.boot.dao.impl.TaskDaoImpl - 开始查询所有的任务的列表 
+21:01:07.632 [main] INFO  com.cool.boot.utils.TaskBus - 开始添加定时任务TimeTask{id=3, scheduleTaskIndex='null', taskName='demo:231321', executeTime='0 48 13 16 5 ? ', params='{'msg':'demo:231321','code':500}', scheduleOperaEnum=null}... 
+21:01:07.737 [main] INFO  com.cool.boot.dao.impl.TaskDaoImpl - 开始保存任务列表=demo:231321 
+21:01:08.229 [main] INFO  com.cool.boot.utils.TaskBus - 启动定时任务success 
+21:01:08.229 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started. 
+21:01:08.230 [main] INFO  com.cool.boot.utils.TaskBus - 添加定时任务TimeTask{id=3, scheduleTaskIndex='null', taskName='demo:231321', executeTime='0 48 13 16 5 ? ', params='{'msg':'demo:231321','code':500}', scheduleOperaEnum=null}success... 
+21:01:08.230 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started. 
+21:01:08.230 [main] INFO  com.cool.boot.utils.TaskBus - 初始化定时任务success... 
+21:01:08.418 [main] WARN  com.cool.boot.tcp.OnlineServer - TCP长连接服务端已启动,端口号为：5005 
+21:01:08.805 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService  'taskExecutor' 
+21:01:08.992 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+21:01:09.441 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2a7686a7: startup date [Fri Jun 01 21:00:52 CST 2018]; root of context hierarchy 
+21:01:09.584 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/test],methods=[GET]}" onto public boolean com.cool.boot.controller.FristController.test() 
+21:01:09.585 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/hello],methods=[GET]}" onto public com.cool.boot.entity.Response com.cool.boot.controller.FristController.hello() 
+21:01:09.590 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/user/login],methods=[POST]}" onto public com.cool.boot.entity.Response com.cool.boot.controller.UserController.login() 
+21:01:09.596 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest) 
+21:01:09.597 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) 
+21:01:09.656 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+21:01:09.656 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler] 
+21:01:09.697 [main] INFO  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Detected @ExceptionHandler methods in coolExceptionHandler 
+21:01:10.627 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor 
+21:01:10.636 [main] INFO  o.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl 
+21:01:10.637 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.2.3 created. 
+21:01:10.637 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized. 
+21:01:10.637 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+ 
+21:01:10.637 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance. 
+21:01:10.638 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.2.3 
+21:01:10.638 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.boot.autoconfigure.quartz.AutowireCapableBeanJobFactory@3d0352 
+21:01:10.934 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter - Registering beans for JMX exposure on startup 
+21:01:10.940 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter - Bean with name 'dataSource' has been autodetected for JMX exposure 
+21:01:10.966 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter - Bean with name 'factory' has been autodetected for JMX exposure 
+21:01:10.979 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter - Located managed bean 'factory': registering with JMX server as MBean [org.springframework.amqp.rabbit.connection:name=factory,type=CachingConnectionFactory] 
+21:01:11.023 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter - Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource] 
+21:01:11.073 [main] INFO  o.s.c.s.DefaultLifecycleProcessor - Starting beans in phase 2147483647 
+21:01:11.080 [demoListener-1] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: 106.15.205.155:5672 
+21:01:11.225 [demoListener-1] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: factory#6a916402:0/SimpleConnection@78c0ac88 [delegate=amqp://guest@106.15.205.155:5672/, localPort= 54050] 
+21:01:11.776 [main] INFO  o.s.s.quartz.SchedulerFactoryBean - Starting Quartz Scheduler now 
+21:01:11.777 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED started. 
+21:01:11.912 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9090 (http) with context path '' 
+21:01:11.943 [main] INFO  com.cool.boot.Boot - Started Boot in 24.179 seconds (JVM running for 31.551) 
+21:01:22.895 [Thread-54] INFO  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2a7686a7: startup date [Fri Jun 01 21:00:52 CST 2018]; root of context hierarchy 
+21:01:22.900 [Thread-54] INFO  o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase 2147483647 
+21:01:22.922 [Thread-54] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish. 
+21:01:23.676 [Thread-54] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish. 
+21:01:23.693 [Thread-54] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish. 
+21:01:23.751 [Thread-54] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish. 
+21:01:23.773 [Thread-54] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish. 
+21:01:23.832 [Thread-54] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish. 
+21:01:23.833 [Thread-54] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED paused. 
+21:01:23.834 [Thread-54] INFO  o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase 0 
+21:01:23.841 [Thread-54] INFO  o.s.s.quartz.SchedulerFactoryBean - Shutting down Quartz Scheduler 
+21:01:23.841 [Thread-54] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED shutting down. 
+21:01:23.842 [Thread-54] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED paused. 
+21:01:23.843 [Thread-54] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete. 
+21:01:23.852 [Thread-54] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Shutdown ignored - container is not active already 
+21:01:23.852 [Thread-54] INFO  o.s.j.e.a.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown 
+21:01:23.853 [Thread-54] INFO  o.s.j.e.a.AnnotationMBeanExporter - Unregistering JMX-exposed beans 
+21:01:23.854 [Thread-54] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'taskExecutor' 
+21:01:23.854 [Thread-54] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Shutdown ignored - container is not active already 
+21:01:23.854 [Thread-54] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Shutdown ignored - container is not active already 
+21:01:23.857 [Thread-54] WARN  com.cool.boot.tcp.OnlineServer - TCP长连接服务端已关闭 
+21:01:23.858 [Thread-54] INFO  org.quartz.core.QuartzScheduler - Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED shutting down. 
+21:01:23.858 [Thread-54] INFO  org.quartz.core.QuartzScheduler - Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED paused. 
+21:01:23.859 [Thread-54] INFO  org.quartz.core.QuartzScheduler - Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED shutdown complete. 
+21:01:23.860 [Thread-54] INFO  com.cool.boot.utils.TaskBus - 销毁定时任务成功 
+21:01:23.860 [Thread-54] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+21:01:23.872 [Thread-54] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed. 

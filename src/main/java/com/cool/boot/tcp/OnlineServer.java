@@ -3,7 +3,6 @@ package com.cool.boot.tcp;
 
 import com.cool.boot.tcp.coder.JSONDecoder;
 import com.cool.boot.tcp.coder.JSONEncoder;
-import com.cool.boot.tcp.test.OnlineServerHandlerTwo;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
@@ -18,6 +17,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+
 
 /**
  * TCP长连接Server
@@ -78,6 +78,5 @@ public class OnlineServer {
         }
 
         log.warn("TCP长连接服务端已关闭");
-
     }
 }
