@@ -3,8 +3,10 @@ package com.cool.boot.service.impl;
 import com.cool.boot.entity.Response;
 import com.cool.boot.enums.HttpStatusEnum;
 import com.cool.boot.service.UserService;
+import com.cool.boot.utils.OkHttpUtils;
 import com.cool.boot.utils.WXLoginUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,6 +25,8 @@ public class UserServiceImpl implements UserService {
     private static String AUTHORIZATION_CODE = "authorization_code";
 
 
+
+
     /**
      * 登录
      * @return
@@ -38,11 +42,11 @@ public class UserServiceImpl implements UserService {
     public Response authConnect(String code, String clientId, String redirectUrl, String scope, String state) {
 
         if (code == null || StringUtils.isEmpty(code)){
-            return Response.error(HttpStatusEnum.EMTRY_PARAMS.getCode(),"授权码code不能为空");
+            return Response.error(HttpStatusEnum.EMPTY_PARAMS.getCode(),"授权码code不能为空");
         } else if (!CODE.equals(code)){
             return Response.error("授权码只能为code");
         } else if (clientId == null || StringUtils.isEmpty(clientId)){
-            return Response.error(HttpStatusEnum.EMTRY_PARAMS.getCode(),"client_id不能为空");
+            return Response.error(HttpStatusEnum.EMPTY_PARAMS.getCode(),"client_id不能为空");
         }//todo redirectUrl合法判断
 
         Map<String, Object> res = new HashMap<>(16);
@@ -67,7 +71,7 @@ public class UserServiceImpl implements UserService {
                 getUrl.append(state);
             }
 
-            WXLoginUtils.toGet( getUrl.toString());
+            OkHttpUtils.toGet(getUrl.toString());
 
         }
 
@@ -80,11 +84,11 @@ public class UserServiceImpl implements UserService {
     public Response getAccessToken(String clientId, String clientSecret, String code, String grantType) {
 
         if (clientId == null || StringUtils.isEmpty(clientId)){
-            return Response.error(HttpStatusEnum.EMTRY_PARAMS.getCode(),"client_id不能为空");
+            return Response.error(HttpStatusEnum.EMPTY_PARAMS.getCode(),"client_id不能为空");
         }else if (clientSecret == null || StringUtils.isEmpty(clientSecret)){
-            return Response.error(HttpStatusEnum.EMTRY_PARAMS.getCode(),"client_secret不能为空");
+            return Response.error(HttpStatusEnum.EMPTY_PARAMS.getCode(),"client_secret不能为空");
         }else if (code == null || StringUtils.isEmpty(code)){
-            return Response.error(HttpStatusEnum.EMTRY_PARAMS.getCode(),"授权码code不能为空");
+            return Response.error(HttpStatusEnum.EMPTY_PARAMS.getCode(),"授权码code不能为空");
         }else if (grantType == null || !grantType.equals(AUTHORIZATION_CODE)){
             return Response.error("grant_type参数错误");
         }

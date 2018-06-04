@@ -33,7 +33,7 @@ public class UserController {
      */
     @GetMapping("authconnect")
     public Response authConnect(String code,
-                                @RequestParam(value = "client_id",required = false)String clientId,
+                                @RequestParam(value = "client_id")String clientId,
                                 @RequestParam(value = "redirect_url",required = false) String redirectUrl,
                                 @RequestParam(value = "scope",required = false)String scope,
                                 @RequestParam(value = "state",required = false)String state){

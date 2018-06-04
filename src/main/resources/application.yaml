@@ -13,3 +13,31 @@ mybatis:
 
 application:
   name: cool-boot
+
+qq:
+  appid:
+  secret:
+
+wx:
+  appid: sadsadsadsa
+  secret:
+  mini:
+    appid:
+    secret:
+
+aliPay:
+   partner:  2088721218082184
+   notifyUrl: http://www.52Woo.com:9203/pay/aliPayNotify
+   app:
+      id: 2017060807450301
+   public:
+      key: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDDI6d306Q8fIfCOaTXyiUeJHkrIvYISRcc73s3vF1ZT7XN8RNPwJxo8pWaJMmvyTn9N4HQ632qJBVHf8sxHi/fEsraprwCtzvzQETrNRwVxLO5jVmRGi60j8Ue1efIlzPXV9je9mkjzOmdssymZkh2QhUrCmZYI/FCEa3/cNMW0QIDAQAB
+   private:
+      key: MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAMlVI52n1syjau3YuTQtwFk4wjWJxjso6/Mcc3lUwYPtPnLKlSKG7pxl8PB2EGL7QkD6Ekqrd4Ljt6c6fm4RSyGZ7/DGgOzTgK5kprCnhz0DfUfDnxFfc+i6Lue6DE+vpQIIwH3ZtXxVx8SxWvTmwTngxuDYh6TQJDz1ukwAeukJAgMBAAECgYEAoqu/0ypBS6beRr7NJXOx7mUFxexD1pkBy7Q5ONdaZBXUVzuHtBYBxSw4uJEsPE13ArkK/nn8Xi1PvjZs4NHoORaTQIFxXojJxXvQ8uSX+c99OTBkg6eUkC2yrg4xkoaSMThjPLiUcdr/AiEkYhxfz7fuxYoCytoj9T7c6aiNFYECQQDv4c44TobJdG4cQBoXcGlQGOZU7caxROd0+yDapSyTjaD+dHweFSb5dhPicusoNLfJrH6sO1LAFW1eDHUemSKtAkEA1tw/J0UAiqVXWH9sugoSSC93wqG5ZDunQlONAiLenOZqYzFVfOMnm+YvDDdFQ4xVa4qOw2ffmFIwO0U3gjPHTQJAFV1qLY+o55ZsHC4FZOMJLi4ZjaTj1nQJnVykj3S4pKevmBot18wQfZVrrfaIRTt0xwyK97IM67i81eyMHd6LvQJAJAHfF46py5Jv8+XO69KaQ7yovlZqAlE485Wa8Pu1AOhgdeUjpX1P+wF1av+sPOi8u/wJdtfmkdlcOeKcrdZNlQJAbFxTJD0aqUWQN2P+pgEj6KZGaY4edfxtgw4lCOslGN0G14NLrhcfa9XI9iHJuOehPs5+ZgvlmJwn2XJAB4LLzg==
+
+WXPay:
+  key: 商户号
+  notifyUrl: http://www.52Woo.com:9203/pay/wxPayNotify
+  body: 吾爱商品
+  shop:
+    id: zhejiangwuai
