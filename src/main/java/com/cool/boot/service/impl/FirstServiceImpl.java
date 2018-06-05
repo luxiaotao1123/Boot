@@ -30,8 +30,8 @@ public class FirstServiceImpl implements FirstService {
     @Resource
     private RabbitMqPublishImpl rabbitMqPublish;
 
-    @Resource
-    private ValueOperations<String, String> myValueOperations;
+//    @Resource
+//    private ValueOperations<String, String> myValueOperations;
 
     @Resource
     private ExecutorsConfig executors;

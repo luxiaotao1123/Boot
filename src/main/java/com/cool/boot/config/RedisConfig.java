@@ -4,7 +4,6 @@ package com.cool.boot.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -19,7 +18,6 @@ import javax.annotation.Resource;
  * @Auth Vincent
  */
 @Configuration
-@Order(1)
 public class RedisConfig {
 
     @Bean("hashTemplate")
@@ -35,7 +33,7 @@ public class RedisConfig {
         return createTemplateCache(OperateEnum.STRING);
     }
 
-    @Bean("myValueOperations")
+    @Bean("coolValueOperations")
     public ValueOperations<String,String> createQrcodeRedis(){
         return createTemplateCache(OperateEnum.STRING).opsForValue();
     }
@@ -43,6 +41,18 @@ public class RedisConfig {
     @Bean("tokenValueRedisTemplate")
     public ValueOperations<String, String> createTokenValueRedisTemplate(){
         return createTemplateCache(OperateEnum.STRING).opsForValue();
+    }
+
+//    @Bean("oAuthCodeCache")
+//    public ValueOperations<String, String> createOAuthCodeCache(){
+//        RedisTemplate template = createTemplateCache(OperateEnum.STRING);
+//        template.expire("oAuth:code:123",1, TimeUnit.MINUTES);
+//        return template.opsForValue();
+//    }
+
+    @Bean("oAuthCache")
+    public RedisTemplate createOAuthCodeCache(){
+        return createTemplateCache(OperateEnum.STRING);
     }
 
     @Resource
@@ -70,7 +80,7 @@ public class RedisConfig {
 
 
     private RedisTemplate createTemplateCache(OperateEnum operateEnum) {
-        RedisTemplate template = new RedisTemplate<>();
+        RedisTemplate<String, String> template = new RedisTemplate<>();
         template.setConnectionFactory(jedisConnectionFactory);
         template.setKeySerializer(new StringRedisSerializer());
 //        template.expire("",1, TimeUnit.DAYS);

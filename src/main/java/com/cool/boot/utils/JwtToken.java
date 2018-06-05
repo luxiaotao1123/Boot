@@ -15,10 +15,15 @@ public class JwtToken {
 
 
     public static final int EXPIRE_TIME = 128;
+    public static final int ACCESS_TOKEN_EXPIRE_TIME = 2;
+    public static final int REFRESH_TOKEN_EXPIRE_TIME = 30;
     public static final String HEADER = "token";
 
     private static final String KEY = "com.cool.boot";
     public static final String ID = "id";
+    private static final String ARG = "arg";
+    public static final String CLIENT_ID = "client_id";
+    public static final String SECRET = "secret";
     private static Logger logger = LoggerFactory.getLogger(JwtToken.class);
 
     /**
@@ -39,8 +44,28 @@ public class JwtToken {
                 setExpiration(calendar.getTime()).
                 signWith(SignatureAlgorithm.HS256, KEY).
                 compact();
+    }
+
+    /**
+     * 加密token
+     * @param arg arg
+     * @return
+     */
+    public static String enToken(String arg, String key) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.HOUR, ACCESS_TOKEN_EXPIRE_TIME);
+        Map<String, Object> map = new HashMap<>();
+        map.put(ARG, arg);
+        return Jwts.
+                builder().
+                setClaims(map).
+                setIssuedAt(new Date()).
+                setExpiration(calendar.getTime()).
+                signWith(SignatureAlgorithm.HS256, key).
+                compact();
 
     }
+
 
 
     /**

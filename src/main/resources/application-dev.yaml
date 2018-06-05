@@ -16,10 +16,10 @@ rabbit:
   pass: guest
 
 redis:
-  host: 120.55.67.48
-  port: 8048
+  host: 106.15.205.155
+  port: 6379
   database: 1
-  password: nessary
+  password: xltys1995
 
 tcp:
   port: 5005
