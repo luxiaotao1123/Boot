@@ -115,4 +115,17 @@ public class WXLoginUtils {
         return null;
     }
 
+    /********************************************************WXMINI_LOGIN**************************************************************************/
+
+    private static final String MiniAppID = "wx4a300c4010f4be69";
+    private static final String MiniAppSecret = "66fb35add2f7242f24102a9380115abb";
+
+    private static final String GET_OPENID_MINIWX = "https://api.weixin.qq.com/sns/jscode2session";
+
+    //getOpenId
+    public static String getOpenIdSmallWX(String jsCode) {
+
+        return new StringBuilder(GET_OPENID_MINIWX).append("?appid=").append(MiniAppID).append("&secret=").append(MiniAppSecret).
+                append("&js_code=").append(jsCode).append("&grant_type=authorization_code").toString();
+    }
 }

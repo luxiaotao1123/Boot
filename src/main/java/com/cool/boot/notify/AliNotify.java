@@ -89,15 +89,17 @@ public class AliNotify {
         json.put("sign", rsaSign);
         json.put("out_trade_no", orderNo);
 
-        String builder_biz = "{" + "\"body\":" + "\"" + body.intern() + "\"," + "\"subject\":" + "\"" + bugInfo.intern() + "\"," +
-                "\"out_trade_no\":" + "\"" + orderNo.intern() + "\"," + "\"timeout_express\":" + "\"30m\"," + "\"total_amount\":" + payMoney.intern() +
-                "," + "\"product_code\":" + "\"QUICK_MSECURITY_PAY\"" + "}";
+        StringBuilder builder_biz = new StringBuilder();
+        builder_biz.append("{").append("\"body\":").append("\"").append(body).append("\",").append("\"subject\":").append("\"").append(bugInfo).append("\",")
+                .append("\"out_trade_no\":").append("\"").append(orderNo).append("\",").append("\"timeout_express\":").append("\"30m\",").append("\"total_amount\":").append(payMoney)
+                .append(",").append("\"product_code\":").append("\"QUICK_MSECURITY_PAY\"").append("}");
 
-        String builder_url = "app_id=" + app_id + "&biz_content=" + builder_biz.intern() + "&charset=" + "utf-8" + "&format=" + "json" + "&method=" + "alipay.trade.app.pay" +
-                "&notify_url=" + notifyUrl + "&sign=" + rsaSign.intern() + "&sign_type=" + "RSA" + "&timestamp=" + LocalDateTime.now().format(formatter) +
-                "&version=" + "1.0";
+        StringBuilder builder_url = new StringBuilder();
+        builder_url.append("app_id=").append(app_id).append("&biz_content=").append(builder_biz.toString()).append("&charset=").append("utf-8").append("&format=").append("json").append("&method=").append("alipay.trade.app.pay")
+                .append("&notify_url=").append(notifyUrl).append("&sign=").append(rsaSign).append("&sign_type=").append("RSA").append("&timestamp=").append(LocalDateTime.now().format(formatter))
+                .append("&version=").append("1.0");
 
-        json.put("url", builder_url);
+        json.put("url", builder_url.toString());
         return Response.ok(json);
     }
 
