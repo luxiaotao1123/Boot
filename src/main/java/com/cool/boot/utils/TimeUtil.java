@@ -39,7 +39,7 @@ public class TimeUtil {
      * @param param
      * @return
      */
-    public static StringBuilder secondToMinute(Double param, StringBuilder stringBuilder){
+    public static StringBuilder secondsToMinute(Double param, StringBuilder stringBuilder){
         StringBuilder res;
         if (stringBuilder != null){
             res = stringBuilder;
@@ -64,13 +64,13 @@ public class TimeUtil {
             res.append(hour);
             Double seconds = param % 3600;
             if (!seconds.equals(0.0)){
-                return secondToMinute(seconds, res);
+                return secondsToMinute(seconds, res);
             }
         }
         return res;
     }
 
-    public static StringBuilder secondToMinute(Double param){
+    public static StringBuilder secondsToMinute(Double param){
         StringBuilder res = new StringBuilder();
         if (param < 60){
             res.append(param.intValue());
@@ -90,20 +90,20 @@ public class TimeUtil {
             res.append(hour);
             Double seconds = param % 3600;
             if (!seconds.equals(0.0)){
-                return secondToMinute(seconds, res);
+                return secondsToMinute(seconds, res);
             }
         }
         return res;
     }
 
     /**
-     * 当前时间yyyy-MM-dd HH:mm
+     * 当前时间
+     * @return  "yyyy-MM-dd HH:mm:ss"
      */
     public static String currentTime(){
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        String date = simpleDateFormat.format(new Date());
-        return date;
+        return new SimpleDateFormat(TIME_FORMAT).format(new Date());
     }
+
     /**
      * TimeUtil.currentTime()转换
      */

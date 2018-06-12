@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @author Vincent
  */
-
 @RestController
 @RequestMapping("v1/spider")
 public class Accept {
@@ -19,20 +18,9 @@ public class Accept {
     @Autowired
     private UrlSubject urlSubject;
 
-
     @GetMapping("vin")
     public Response One(String url){
 
-
-
-
-        if (!urlSubject.addUrl(url)){
-
-            return Response.error();
-        }
-
-
-
-        return Response.ok();
+        return !urlSubject.addUrl(url) ? Response.error() : Response.ok();
     }
 }

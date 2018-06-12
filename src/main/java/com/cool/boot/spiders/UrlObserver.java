@@ -10,8 +10,6 @@ import static com.cool.boot.spiders.UrlSubject.urlReq;
 @Component("urlObserver")
 public class UrlObserver implements Observer {
 
-
-
     @Override
     public boolean work() {
 

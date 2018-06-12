@@ -1,10 +1,13 @@
 package com.cool.boot.utils;
 
+import com.cool.boot.exception.CoolException;
+import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
 import java.io.IOException;
+import java.util.Map;
 
 public class OkHttpUtils {
 
@@ -17,6 +20,31 @@ public class OkHttpUtils {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static String toPost(String uri, Map<String, String> params){
+        if (params == null) throw new CoolException( uri + "接口参数为空");
+
+        try {
+            OkHttpClient okHttpClient = new OkHttpClient();
+            FormBody.Builder formBodyBuilder = new FormBody.Builder();
+            for (Map.Entry<String, String> entry : params.entrySet()){
+                formBodyBuilder.add(entry.getKey(), entry.getValue());
+            }
+            FormBody formBody = formBodyBuilder.build();
+            Request request = new Request
+                    .Builder()
+                    .post(formBody)
+                    .url(uri)
+                    .build();
+            Response response = okHttpClient.newCall(request).execute();
+            return response.isSuccessful() ? response.body().string() : null;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+
     }
 
 }

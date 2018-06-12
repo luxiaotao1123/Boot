@@ -33,4 +33,9 @@ public class UrlSubject extends Subject {
         return res;
     }
 
+//    public static void main(String[] args) {
+//        OkHttpUtils.toGet("test.52woo.com:9203/merchants/propelling/users/load/admin")
+//
+//    }
+
 }
