@@ -1,11 +1,8 @@
 package com.cool.boot.design.algorithm;
 
 import com.cool.boot.exception.CoolException;
-import com.cool.boot.utils.TimeUtil;
 import lombok.extern.slf4j.Slf4j;
 
-import java.sql.Time;
-import java.util.Arrays;
 
 /**
  * 算法
@@ -85,5 +82,23 @@ public class Algorithm {
         return arg;
     }
 
+
+    /**
+     *
+     * @param arg
+     * @param asc
+     * @return
+     */
+    public static int[] fastSort(int[] arg, boolean ...asc){
+        if (arg == null || arg.length < 1){
+            log.error("FastSort can not find args");
+            throw new CoolException("FastSort can not find args");
+        }
+
+
+
+        return arg;
+
+    }
 
 }
