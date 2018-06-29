@@ -8,6 +8,8 @@ import okhttp3.Response;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class OkHttpUtils {
 
@@ -45,6 +47,27 @@ public class OkHttpUtils {
 
         return null;
 
+    }
+
+    public static void main(String[] args) {
+        OkHttpUtils okHttpUtils = new OkHttpUtils();
+        ExecutorService pool = Executors.newFixedThreadPool(5);
+
+
+        for (int i =0;i<20;i++){
+            pool.execute(okHttpUtils.new MyThread());
+        }
+
+        pool.shutdown();
+    }
+
+    class MyThread implements Runnable{
+
+        @Override
+        public void run() {
+            System.out.println(toGet("http://localhost:9090/user/test"));
+
+        }
     }
 
 }
