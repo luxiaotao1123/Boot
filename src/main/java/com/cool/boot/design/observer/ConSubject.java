@@ -17,9 +17,9 @@ public class ConSubject extends Subject {
     }
 
     @Override
-    public void change(String msg){
+    public void change(String msg) {
 
-       this.notifyObservers(msg);
+        this.notifyObservers(msg);
 
     }
 

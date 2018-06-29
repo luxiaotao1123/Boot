@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author Vincent
- *
+ * <p>
  * 总线程池
  */
 @Component("executors")
@@ -30,16 +30,16 @@ public class ExecutorsConfig implements DisposableBean {
     private EnumMap<ExecutorsEnum, ExecutorService> executors;
 
 
-    public ExecutorService getSingle(ExecutorsEnum executorsEnum){
+    public ExecutorService getSingle(ExecutorsEnum executorsEnum) {
 
-        if (executors == null){
+        if (executors == null) {
 
             executors = new EnumMap<>(ExecutorsEnum.class);
-            for (ExecutorsEnum param : allCategory){
+            for (ExecutorsEnum param : allCategory) {
                 executors.put(param, java.util.concurrent.Executors.newSingleThreadExecutor(r -> {
                     Thread thread = new Thread(r);
                     thread.setName(applicationName + count.getAndIncrement());
-                    if (thread.isDaemon()){
+                    if (thread.isDaemon()) {
                         thread.setDaemon(Boolean.FALSE);
                     }
 
@@ -55,7 +55,7 @@ public class ExecutorsConfig implements DisposableBean {
 
 
     @Override
-    public void destroy(){
+    public void destroy() {
 
         if (executors != null) {
             for (ExecutorService executorService : executors.values()) {

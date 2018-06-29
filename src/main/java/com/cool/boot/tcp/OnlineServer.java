@@ -21,7 +21,8 @@ import javax.annotation.PreDestroy;
 
 /**
  * TCP长连接Server
- * @author  Vincent
+ *
+ * @author Vincent
  */
 @Component
 @Slf4j
@@ -42,7 +43,7 @@ public class OnlineServer {
         ServerBootstrap bootstrap = new ServerBootstrap();
 
         bootstrap
-                .group(bossGroup,workerGroup)
+                .group(bossGroup, workerGroup)
                 .channel(NioServerSocketChannel.class)
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     @Override
@@ -56,14 +57,14 @@ public class OnlineServer {
                 .option(ChannelOption.SO_BACKLOG, 128)
                 .childOption(ChannelOption.SO_KEEPALIVE, true);
 
-        log.warn("TCP长连接服务端已启动,端口号为：{}",port);
+        log.warn("TCP长连接服务端已启动,端口号为：{}", port);
 
         channel = bootstrap.bind(port).sync().channel();
 
     }
 
     @PreDestroy
-    public void destroy(){
+    public void destroy() {
 
         if (channel != null && channel.isActive()) {
             channel.close();

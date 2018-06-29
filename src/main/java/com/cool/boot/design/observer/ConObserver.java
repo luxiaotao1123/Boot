@@ -1,6 +1,6 @@
 package com.cool.boot.design.observer;
 
-public class ConObserver implements Observer{
+public class ConObserver implements Observer {
 
 
     @Override

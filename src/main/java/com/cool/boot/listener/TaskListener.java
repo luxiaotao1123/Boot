@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * timTask的监听类
+ *
  * @Auth Vincent
  */
 @Component("taskSubscriber")
@@ -41,9 +42,8 @@ public class TaskListener implements TaskSubscriber {
             Task task = JSONObject.parseObject(transferData.getData(), Task.class);
 
 
-
             if (task == null || task.getScheduleOperaEnum() == null ||
-                    StringUtils.isEmpty(task.getTaskName())|| StringUtils.isEmpty(task.getExecuteTime())) {
+                    StringUtils.isEmpty(task.getTaskName()) || StringUtils.isEmpty(task.getExecuteTime())) {
                 logger.warn("接受监听定时任务的timeTask消息参数为空");
                 return;
             }

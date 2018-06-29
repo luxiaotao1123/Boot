@@ -11,7 +11,7 @@ import java.util.List;
 
 
 public class GeneratorUtils {
-    public static void main(String[] args)throws Exception {
+    public static void main(String[] args) throws Exception {
         List<String> warnings = new ArrayList<String>();
         boolean overwrite = true;
         File configFile = new File("F:\\Cool\\src\\main\\resources\\generatorConfig.xml");

@@ -1,13 +1,12 @@
 package com.cool.boot.entity;
 
 
-
 import com.cool.boot.enums.HttpStatusEnum;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Response extends HashMap<String, Object>{
+public class Response extends HashMap<String, Object> {
 
     public final static String STATUS = "status";
     public final static String MSG = "msg";
@@ -16,7 +15,7 @@ public class Response extends HashMap<String, Object>{
 
     public Response() {
         put(STATUS, HttpStatusEnum.SUCCESS.getCode());
-        put(MSG,HttpStatusEnum.SUCCESS.getValue());
+        put(MSG, HttpStatusEnum.SUCCESS.getValue());
     }
 
     public static Response error() {

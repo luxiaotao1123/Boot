@@ -7,7 +7,7 @@ public abstract class Subject {
 
     private final static List<Observer> observers = new ArrayList<>();
 
-    public void register(Observer observer){
+    public void register(Observer observer) {
 
         observers.add(observer);
     }
@@ -17,16 +17,16 @@ public abstract class Subject {
         observers.remove(observer);
     }
 
-    void notifyObservers(String msg){
+    void notifyObservers(String msg) {
 
-        for (Observer observer : observers){
+        for (Observer observer : observers) {
 
             observer.update(msg);
         }
 
     }
 
-    public void change(String msg){
+    public void change(String msg) {
 
     }
 }

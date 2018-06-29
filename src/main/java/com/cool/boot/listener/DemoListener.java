@@ -34,7 +34,7 @@ public class DemoListener implements DemoSubscriber {
 
         String[] params = taskName.split(":");
 
-        System.out.println("=================================="+params[1]+"======================================");
+        System.out.println("==================================" + params[1] + "======================================");
 
         //删除持久层job
         taskServer.autoDelete(taskName);

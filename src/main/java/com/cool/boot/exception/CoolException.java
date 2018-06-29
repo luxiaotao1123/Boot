@@ -6,7 +6,7 @@ import com.cool.boot.enums.HttpStatusEnum;
  * @Auth Vincent
  */
 
-public class CoolException extends RuntimeException{
+public class CoolException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
 

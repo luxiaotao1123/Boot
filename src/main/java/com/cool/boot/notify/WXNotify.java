@@ -79,25 +79,25 @@ public class WXNotify {
         微信支付回调
      */
     @GetMapping("wxPayNotify")
-    public String wxPayNotify(@RequestParam("appid")String appId,
-                              @RequestParam("mch_id")String shopId,
-                              @RequestParam("nonce_str")String nonce_str,
-                              @RequestParam("sign")String sign,
-                              @RequestParam("result_code")String result_code,
-                              @RequestParam("openid")String openid,
-                              @RequestParam("trade_type")String trade_type,
-                              @RequestParam("bank_type")String bank_type,
-                              @RequestParam("total_fee")Integer totalFee,
-                              @RequestParam("cash_fee")Integer cash_fee,
-                              @RequestParam("transaction_id")String orderNo,
-                              @RequestParam("out_trade_no")String out_trade_no,
-                              @RequestParam("time_end")String time_end){
+    public String wxPayNotify(@RequestParam("appid") String appId,
+                              @RequestParam("mch_id") String shopId,
+                              @RequestParam("nonce_str") String nonce_str,
+                              @RequestParam("sign") String sign,
+                              @RequestParam("result_code") String result_code,
+                              @RequestParam("openid") String openid,
+                              @RequestParam("trade_type") String trade_type,
+                              @RequestParam("bank_type") String bank_type,
+                              @RequestParam("total_fee") Integer totalFee,
+                              @RequestParam("cash_fee") Integer cash_fee,
+                              @RequestParam("transaction_id") String orderNo,
+                              @RequestParam("out_trade_no") String out_trade_no,
+                              @RequestParam("time_end") String time_end) {
 
         String res = "";
         log.info("开始进行微信支付回调函数的处理");
         try {
             //todo
-        }catch (Exception e) {
+        } catch (Exception e) {
 
             log.info("进行微信支付回调函数的处理 异常 订单为{}", orderNo, e);
         }
@@ -107,6 +107,7 @@ public class WXNotify {
 
     /**
      * 签名算法
+     *
      * @param o 要参与签名的数据对象
      * @return 签名
      * @throws IllegalAccessException
@@ -120,16 +121,16 @@ public class WXNotify {
             if (f.get(o) != null && f.get(o) != "") {
                 String name = f.getName();
                 XStreamAlias anno = f.getAnnotation(XStreamAlias.class);
-                if(anno != null)
+                if (anno != null)
                     name = anno.value();
                 list.add(name + "=" + f.get(o) + "&");
             }
         }
         int size = list.size();
-        String [] arrayToSort = list.toArray(new String[size]);
+        String[] arrayToSort = list.toArray(new String[size]);
         Arrays.sort(arrayToSort, String.CASE_INSENSITIVE_ORDER);
         StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < size; i ++) {
+        for (int i = 0; i < size; i++) {
             sb.append(arrayToSort[i]);
         }
         String result = sb.toString();
@@ -139,6 +140,7 @@ public class WXNotify {
 
     /**
      * 获取一定长度的随机字符串
+     *
      * @param length 指定字符串长度
      * @return 一定长度的字符串
      */

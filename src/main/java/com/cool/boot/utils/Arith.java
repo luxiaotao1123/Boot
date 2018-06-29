@@ -142,13 +142,13 @@ public class Arith {
     }
 
 
-    public static double getRandom(){
+    public static double getRandom() {
         Double random = Math.random();
-        if (random*100<60.0){
+        if (random * 100 < 60.0) {
             return getRandom();
         }
         DecimalFormat formatter = new DecimalFormat("#.##");
-        Double randoms = Double.valueOf(formatter.format(random*100));
+        Double randoms = Double.valueOf(formatter.format(random * 100));
         return randoms;
     }
 

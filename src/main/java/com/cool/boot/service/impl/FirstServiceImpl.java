@@ -41,9 +41,9 @@ public class FirstServiceImpl implements FirstService {
         Task task = new Task();
         task.setScheduleOperaEnum(ScheduleOperaEnum.ADD_TASK);
         String uuid = UUID.randomUUID().toString();
-        task.setTaskName("demo:"+uuid);
+        task.setTaskName("demo:" + uuid);
         task.setExecuteTime(TimeUtil.qurtzCurrentLaterCron(1));
-        task.setParams(JSON.toJSONString(Response.error("demo:"+uuid)));
+        task.setParams(JSON.toJSONString(Response.error("demo:" + uuid)));
 
         TransferData data = new TransferData();
         data.setData(JSON.toJSONString(task));
@@ -63,7 +63,7 @@ public class FirstServiceImpl implements FirstService {
         return Response.ok();
     }
 
-    class Test implements Runnable{
+    class Test implements Runnable {
 
         @Override
         public void run() {

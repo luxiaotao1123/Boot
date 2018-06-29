@@ -1,8 +1,6 @@
 package com.cool.boot.service.impl;
 
 
-
-
 import com.cool.boot.dao.TaskDao;
 import com.cool.boot.entity.Task;
 
@@ -54,7 +52,7 @@ public class TaskServerImpl implements TaskServer {
         task.setTaskName(taskName);
         task.setDeleted(Boolean.TRUE);
         taskDao.deleteTask(task);
-        logger.warn("定时任务taskName = {}已从持久层清除！",taskName);
+        logger.warn("定时任务taskName = {}已从持久层清除！", taskName);
     }
 
 

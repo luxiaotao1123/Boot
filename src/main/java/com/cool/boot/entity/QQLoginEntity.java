@@ -1,7 +1,6 @@
 package com.cool.boot.entity;
 
 
-
 public class QQLoginEntity {
 
     private String access_token;

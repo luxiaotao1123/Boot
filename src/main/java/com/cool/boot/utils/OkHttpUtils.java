@@ -22,13 +22,13 @@ public class OkHttpUtils {
         return null;
     }
 
-    public static String toPost(String uri, Map<String, String> params){
-        if (params == null) throw new CoolException( uri + "接口参数为空");
+    public static String toPost(String uri, Map<String, String> params) {
+        if (params == null) throw new CoolException(uri + "接口参数为空");
 
         try {
             OkHttpClient okHttpClient = new OkHttpClient();
             FormBody.Builder formBodyBuilder = new FormBody.Builder();
-            for (Map.Entry<String, String> entry : params.entrySet()){
+            for (Map.Entry<String, String> entry : params.entrySet()) {
                 formBodyBuilder.add(entry.getKey(), entry.getValue());
             }
             FormBody formBody = formBodyBuilder.build();

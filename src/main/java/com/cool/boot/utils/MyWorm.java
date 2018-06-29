@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 public class MyWorm {
 
-    public static String getCode(String url){
+    public static String getCode(String url) {
 
         StringBuilder res = new StringBuilder();
         BufferedReader in = null;
@@ -21,7 +21,7 @@ public class MyWorm {
             connection.connect();
             in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
-            while ((line = in.readLine()) != null){
+            while ((line = in.readLine()) != null) {
                 res.append(line);
                 res.append("\n");
             }
@@ -31,28 +31,25 @@ public class MyWorm {
         } finally {
 
             try {
-                if (in != null){
+                if (in != null) {
                     in.close();
                 }
-            }catch (Exception ignore){
+            } catch (Exception ignore) {
             }
         }
 
         return res.toString();
     }
 
-    private static String RegexString(String targetStr, String patternStr)
-    {
+    private static String RegexString(String targetStr, String patternStr) {
 
         Pattern pattern = Pattern.compile(patternStr);
         Matcher matcher = pattern.matcher(targetStr);
-        if (matcher.find())
-        {
+        if (matcher.find()) {
             return matcher.group(1);
         }
         return "Nothing";
     }
-
 
 
     public static void main(String[] args) {
@@ -61,8 +58,7 @@ public class MyWorm {
 
         System.out.println(sourceCode);
 
-        System.out.println( RegexString(sourceCode,"src=\\(.+?)>"));
-
+        System.out.println(RegexString(sourceCode, "src=\\(.+?)>"));
 
 
     }

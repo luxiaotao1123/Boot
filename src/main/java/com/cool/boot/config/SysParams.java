@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * 系统参数
+ *
  * @author Vincent
  */
 @Component("sysParams")

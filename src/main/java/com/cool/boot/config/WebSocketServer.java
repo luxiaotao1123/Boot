@@ -10,7 +10,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Socket Server
- * @author  vincent
+ *
+ * @author vincent
  * 2018/4/10
  */
 @Slf4j
@@ -30,9 +31,9 @@ public class WebSocketServer {
     public void onOpen(Session session, @PathParam(value = "id") String id) {
         this.session = session;
         addOnlineCount();
-        log.warn("id={}的用户已建立socket连接，当前总连接数为{}",id,getOnlineCount());
-        sessionPool.put(id,session);
-        sessionIds.put(session.getId(),id);
+        log.warn("id={}的用户已建立socket连接，当前总连接数为{}", id, getOnlineCount());
+        sessionPool.put(id, session);
+        sessionIds.put(session.getId(), id);
     }
 
     /*
@@ -40,7 +41,7 @@ public class WebSocketServer {
      */
     @OnMessage
     public void onMessage(String message) {
-        log.warn("收到id={}用户的消息，内容为：{}",sessionIds.get(session.getId()),message);
+        log.warn("收到id={}用户的消息，内容为：{}", sessionIds.get(session.getId()), message);
         //todo
     }
 
@@ -50,7 +51,7 @@ public class WebSocketServer {
     @OnClose
     public void onClose() {
         subOnlineCount();
-        log.warn("id={}的用户已关闭socket连接",sessionIds.get(session.getId()));
+        log.warn("id={}的用户已关闭socket连接", sessionIds.get(session.getId()));
         sessionPool.remove(sessionIds.get(session.getId()));
         sessionIds.remove(session.getId());
     }
@@ -66,9 +67,11 @@ public class WebSocketServer {
     private static synchronized int getOnlineCount() {
         return onlineCount;
     }
+
     private static synchronized void addOnlineCount() {
         onlineCount++;
     }
+
     private static synchronized void subOnlineCount() {
         onlineCount--;
     }

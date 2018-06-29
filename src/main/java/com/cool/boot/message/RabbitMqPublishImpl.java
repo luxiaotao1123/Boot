@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 
 /**
  * rabbitMq的推送实现类
+ *
  * @Auth Vincent
  */
 @Component("rabbitMqPublish")

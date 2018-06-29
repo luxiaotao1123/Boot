@@ -45,7 +45,7 @@ public class InterceptorConfig extends WebMvcConfigurerAdapter {
     private ValueOperations<String, String> tokenValueRedisTemplate;
 
     @Override
-    public void addInterceptors(InterceptorRegistry registry){
+    public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new MyInterceptor())
                 .addPathPatterns("/**/auth");
     }
@@ -70,7 +70,7 @@ public class InterceptorConfig extends WebMvcConfigurerAdapter {
 
             Integer id = JwtToken.parseToken(token);
 
-            if (tokenValueRedisTemplate.size(String.format(TOKEN_CASH,id))==0 || !token.equals(tokenValueRedisTemplate.get(String.format(TOKEN_CASH,id)))){
+            if (tokenValueRedisTemplate.size(String.format(TOKEN_CASH, id)) == 0 || !token.equals(tokenValueRedisTemplate.get(String.format(TOKEN_CASH, id)))) {
                 logger.warn("Ip={}的token验证失败", Iptools.gainRealIp(request));
                 request.setAttribute(Response.STATUS, HttpStatusEnum.TOKEN_ERROR.getCode());
                 return false;
@@ -87,7 +87,7 @@ public class InterceptorConfig extends WebMvcConfigurerAdapter {
             String refreshToken = JwtToken.toToken(id);
             res.addHeader(JwtToken.HEADER, refreshToken);
 
-            tokenValueRedisTemplate.set(String.format(TOKEN_CASH,id),refreshToken);
+            tokenValueRedisTemplate.set(String.format(TOKEN_CASH, id), refreshToken);
 
             request.setAttribute(JwtToken.ID, id);
 

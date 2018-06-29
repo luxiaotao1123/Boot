@@ -26,40 +26,40 @@ public class QQLoginUtils {
     private static final String GET_USERINFO_URL = "https://graph.qq.com/user/get_user_info";
 
     //1.获取Code API
-    public static String getCodeApi(String redirectUri,String state) {
+    public static String getCodeApi(String redirectUri, String state) {
         String codeRes = "";
         try {
             codeRes = URLEncoder.encode(redirectUri);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return GET_CODE_URL + "?response_type=code&client_id="+AppID+"&redirect_uri="+codeRes+"&state="+state+"&scope=get_user_info";
+        return GET_CODE_URL + "?response_type=code&client_id=" + AppID + "&redirect_uri=" + codeRes + "&state=" + state + "&scope=get_user_info";
     }
 
     //2.通过code获取AccessToken API
-    public static String getTokenApi(String code,String redirectUri) {
+    public static String getTokenApi(String code, String redirectUri) {
         String tokenRes = "";
         try {
             tokenRes = URLEncoder.encode(redirectUri);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return GET_TOKEN_URL + "?grant_type=authorization_code&client_id="+AppID+"&client_secret="+AppSecret+"&code="+code+"&redirect_uri="+tokenRes;
+        return GET_TOKEN_URL + "?grant_type=authorization_code&client_id=" + AppID + "&client_secret=" + AppSecret + "&code=" + code + "&redirect_uri=" + tokenRes;
     }
 
     //3.根据refreshToken刷新AccessToken有效期 API
     public static String refreshTokenApi(String refreshToken) {
-        return REFRESH_TOKEN_URL + "?grant_type=refresh_token&client_id="+AppID+"&client_secret="+AppSecret+"&refresh_token="+refreshToken;
+        return REFRESH_TOKEN_URL + "?grant_type=refresh_token&client_id=" + AppID + "&client_secret=" + AppSecret + "&refresh_token=" + refreshToken;
     }
 
     //4.根据accessToken拿到openId API
-    public static String getOpenIdApi(String accessToken){
-        return GET_OPENID_URL + "?access_token="+accessToken;
+    public static String getOpenIdApi(String accessToken) {
+        return GET_OPENID_URL + "?access_token=" + accessToken;
     }
 
     //5.根据accessToken，oauthConsumerKey，openId拿到userInfo API
-    public static String getUserInfoApi(QQLoginEntity data){
-        return GET_USERINFO_URL+"?access_token="+data.getAccess_token()+"&oauth_consumer_key="+AppID+"&openid"+data.getOpenid();
+    public static String getUserInfoApi(QQLoginEntity data) {
+        return GET_USERINFO_URL + "?access_token=" + data.getAccess_token() + "&oauth_consumer_key=" + AppID + "&openid" + data.getOpenid();
     }
 
 

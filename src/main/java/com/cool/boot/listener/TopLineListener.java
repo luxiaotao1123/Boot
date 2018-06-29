@@ -15,7 +15,7 @@ public class TopLineListener {
 
     @RabbitHandler
     @RabbitListener(queues = TOPLINE_QUEUE)
-    public void onMessage(String msg){
+    public void onMessage(String msg) {
 
         try {
 

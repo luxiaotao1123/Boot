@@ -1,7 +1,6 @@
 package com.cool.boot.mapper;
 
 
-
 import com.cool.boot.entity.Task;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -10,6 +9,7 @@ import java.util.List;
 
 /**
  * 订单信息的mapper层
+ *
  * @Auth Vincent
  */
 @Mapper

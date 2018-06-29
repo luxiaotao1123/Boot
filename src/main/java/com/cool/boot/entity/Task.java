@@ -1,8 +1,6 @@
 package com.cool.boot.entity;
 
 
-
-
 import com.cool.boot.enums.ScheduleOperaEnum;
 
 import java.io.Serializable;

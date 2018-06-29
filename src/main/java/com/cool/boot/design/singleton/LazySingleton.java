@@ -9,14 +9,14 @@ public class LazySingleton {
 
     private volatile static LazySingleton instance = null;
 
-    private LazySingleton(){
+    private LazySingleton() {
     }
 
-    public static LazySingleton getInstance(){
+    public static LazySingleton getInstance() {
 
-        if (instance == null){
+        if (instance == null) {
 
-            synchronized (LazySingleton.class){
+            synchronized (LazySingleton.class) {
                 return new LazySingleton();
             }
 

@@ -21,25 +21,27 @@ import javax.annotation.Resource;
 public class RedisConfig {
 
     @Bean("hashTemplate")
-    public HashOperations<String,String,Object> createSnatchUserRedis(){
+    public HashOperations<String, String, Object> createSnatchUserRedis() {
         return createTemplateCache(OperateEnum.HASH).opsForHash();
     }
+
     @Bean("zSetRedisTemplate")
-    public ZSetOperations<String,String> createUndoneRedis(){
+    public ZSetOperations<String, String> createUndoneRedis() {
         return createTemplateCache(OperateEnum.STRING).opsForZSet();
     }
+
     @Bean("redisRedisTemplate")
     public RedisTemplate<String, String> createRemoveRedis() {
         return createTemplateCache(OperateEnum.STRING);
     }
 
     @Bean("coolValueOperations")
-    public ValueOperations<String,String> createQrcodeRedis(){
+    public ValueOperations<String, String> createQrcodeRedis() {
         return createTemplateCache(OperateEnum.STRING).opsForValue();
     }
 
     @Bean("tokenValueRedisTemplate")
-    public ValueOperations<String, String> createTokenValueRedisTemplate(){
+    public ValueOperations<String, String> createTokenValueRedisTemplate() {
         return createTemplateCache(OperateEnum.STRING).opsForValue();
     }
 
@@ -51,7 +53,7 @@ public class RedisConfig {
 //    }
 
     @Bean("oAuthCache")
-    public RedisTemplate createOAuthCodeCache(){
+    public RedisTemplate createOAuthCodeCache() {
         return createTemplateCache(OperateEnum.STRING);
     }
 
@@ -59,10 +61,10 @@ public class RedisConfig {
     private JedisConnectionFactory jedisConnectionFactory;
 
     @Bean("jedisConnectionFactory")
-    public JedisConnectionFactory  createJedisConnectionFactory(@Value("${redis.host}") String host,
-                                                                @Value("${redis.port}") Integer port,
-                                                                @Value("${redis.database}") Integer database,
-                                                                @Value("${redis.password}") String pass) {
+    public JedisConnectionFactory createJedisConnectionFactory(@Value("${redis.host}") String host,
+                                                               @Value("${redis.port}") Integer port,
+                                                               @Value("${redis.database}") Integer database,
+                                                               @Value("${redis.password}") String pass) {
 
         JedisConnectionFactory factory = new JedisConnectionFactory();
         factory.setHostName(host);

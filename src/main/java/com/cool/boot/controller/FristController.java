@@ -22,15 +22,15 @@ public class FristController {
     private RabbitTemplate rabbitPush;
 
     @GetMapping("hello")
-    public Response hello(){
+    public Response hello() {
         return firstService.hello();
     }
 
     @GetMapping("test")
-    public boolean test(){
+    public boolean test() {
 
-        for (int i = 0 ; i<10; i++){
-            rabbitPush.convertAndSend(TOPLINE_EXCHANGE,TOPLINE_ROUTINGKEY,"hello luxiaotao"+i);
+        for (int i = 0; i < 10; i++) {
+            rabbitPush.convertAndSend(TOPLINE_EXCHANGE, TOPLINE_ROUTINGKEY, "hello luxiaotao" + i);
         }
 
         return true;

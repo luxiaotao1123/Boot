@@ -17,21 +17,21 @@ public abstract class Subject {
 
     }
 
-    public static void register(Observer observer){
+    public static void register(Observer observer) {
         observers.add(observer);
     }
 
-    public static void logout(Observer observer){
+    public static void logout(Observer observer) {
         observers.remove(observer);
     }
 
-    boolean urlNotify(){
+    boolean urlNotify() {
 
         boolean res = Boolean.FALSE;
 
-        for (Observer observer : observers){
+        for (Observer observer : observers) {
 
-            if (observer.work()){
+            if (observer.work()) {
                 res = Boolean.TRUE;
             }
 

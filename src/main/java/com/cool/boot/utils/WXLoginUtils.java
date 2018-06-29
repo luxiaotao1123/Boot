@@ -79,32 +79,32 @@ public class WXLoginUtils {
         String firstJson = OkHttpUtils.toGet(WXLoginUtils.getTokenApi(code));
         WXLoginEntity firstData = JSON.parseObject(firstJson, WXLoginEntity.class);
 
-        if (firstData != null){
+        if (firstData != null) {
             //通过 access_token , openid 检验 access_token 是否有效
             String secondJson = OkHttpUtils.toGet(WXLoginUtils.checkTokenApi(firstData.getAccess_token(), firstData.getOpenid()));
             WXLoginEntity secondData = JSON.parseObject(secondJson, WXLoginEntity.class);
 
-            if (secondData != null){
+            if (secondData != null) {
 
                 if (secondData.getErrmsg().equals("ok")) {
                     //通过access_token和openid拿到用户信息，头像url保存起来
-                    String thirdJson = OkHttpUtils.toGet(WXLoginUtils.getUserInfoApi(firstData.getAccess_token(),firstData.getOpenid()));
-                    WXLoginEntity thirdData = JSON.parseObject(thirdJson,WXLoginEntity.class);
+                    String thirdJson = OkHttpUtils.toGet(WXLoginUtils.getUserInfoApi(firstData.getAccess_token(), firstData.getOpenid()));
+                    WXLoginEntity thirdData = JSON.parseObject(thirdJson, WXLoginEntity.class);
 
-                    if (thirdData != null){
+                    if (thirdData != null) {
                         return thirdData;
                     }
 
-                }else {
+                } else {
                     String refreshJson = OkHttpUtils.toGet(WXLoginUtils.refreshTokenApi(firstData.getRefresh_token()));
-                    WXLoginEntity refreshData = JSON.parseObject(refreshJson,WXLoginEntity.class);
+                    WXLoginEntity refreshData = JSON.parseObject(refreshJson, WXLoginEntity.class);
 
-                    if (refreshData != null){
+                    if (refreshData != null) {
 
-                        String resJson = OkHttpUtils.toGet(WXLoginUtils.getUserInfoApi(firstData.getAccess_token(),firstData.getOpenid()));
-                        WXLoginEntity resData = JSON.parseObject(resJson,WXLoginEntity.class);
+                        String resJson = OkHttpUtils.toGet(WXLoginUtils.getUserInfoApi(firstData.getAccess_token(), firstData.getOpenid()));
+                        WXLoginEntity resData = JSON.parseObject(resJson, WXLoginEntity.class);
 
-                        if (resData != null){
+                        if (resData != null) {
                             return resData;
                         }
                     }

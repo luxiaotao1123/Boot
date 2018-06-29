@@ -1,10 +1,6 @@
 package com.cool.boot.dao;
 
 
-
-
-
-
 import com.cool.boot.entity.Task;
 
 import java.util.List;

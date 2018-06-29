@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * 算法
+ *
  * @author Vincent
  */
 @Slf4j
@@ -16,12 +17,13 @@ public class Algorithm {
 
     /**
      * 二分查找法（有序数组）
-     * @param arg   数组
-     * @param params    参数key
-     * @return  下标
+     *
+     * @param arg    数组
+     * @param params 参数key
+     * @return 下标
      */
-    public static int binarySearch(int[] arg , int ...params){
-        if (arg == null || arg.length < 1){
+    public static int binarySearch(int[] arg, int... params) {
+        if (arg == null || arg.length < 1) {
             return NO_EXIST;
         }
 
@@ -29,7 +31,7 @@ public class Algorithm {
         int frontIndex = 0;
         int backIndex = arg.length - 1;
 
-        if (params.length > 1){
+        if (params.length > 1) {
             frontIndex = params[1];
             backIndex = params[2];
         }
@@ -38,7 +40,7 @@ public class Algorithm {
         int midVal = arg[midIndex];
 
         if (midVal > key)
-            return binarySearch(arg, key, frontIndex , midIndex - 1);
+            return binarySearch(arg, key, frontIndex, midIndex - 1);
         else if (midVal < key)
             return binarySearch(arg, key, midIndex + 1, backIndex);
         else if (midVal == key)
@@ -50,27 +52,28 @@ public class Algorithm {
 
     /**
      * 冒泡排序
-     * @param arg   入参
-     * @param asc   不传true升序，false为降序
-     * @return  排序后
+     *
+     * @param arg 入参
+     * @param asc 不传true升序，false为降序
+     * @return 排序后
      */
-    public static int[] bubbleSort(int[] arg, boolean ...asc){
-        if (arg == null || arg.length < 1){
+    public static int[] bubbleSort(int[] arg, boolean... asc) {
+        if (arg == null || arg.length < 1) {
             log.error("BubbleSort can not find args");
             throw new CoolException("BubbleSort can not find args");
         }
 
-        for (int i = 0; i < arg.length - 1 ;i++){
+        for (int i = 0; i < arg.length - 1; i++) {
             int temp;
-            for (int j = 0; j <arg.length - i - 1; j++){
-                if (asc[0] == Boolean.TRUE){
-                    if (arg[j] > arg[j + 1]){
+            for (int j = 0; j < arg.length - i - 1; j++) {
+                if (asc[0] == Boolean.TRUE) {
+                    if (arg[j] > arg[j + 1]) {
                         temp = arg[j];
                         arg[j] = arg[j + 1];
                         arg[j + 1] = temp;
                     }
                 } else {
-                    if (arg[j] < arg[j + 1]){
+                    if (arg[j] < arg[j + 1]) {
                         temp = arg[j];
                         arg[j] = arg[j + 1];
                         arg[j + 1] = temp;
@@ -84,17 +87,15 @@ public class Algorithm {
 
 
     /**
-     *
      * @param arg
      * @param asc
      * @return
      */
-    public static int[] fastSort(int[] arg, boolean ...asc){
-        if (arg == null || arg.length < 1){
+    public static int[] fastSort(int[] arg, boolean... asc) {
+        if (arg == null || arg.length < 1) {
             log.error("FastSort can not find args");
             throw new CoolException("FastSort can not find args");
         }
-
 
 
         return arg;

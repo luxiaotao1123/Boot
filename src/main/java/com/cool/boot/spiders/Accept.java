@@ -19,7 +19,7 @@ public class Accept {
     private UrlSubject urlSubject;
 
     @GetMapping("vin")
-    public Response One(String url){
+    public Response One(String url) {
 
         return !urlSubject.addUrl(url) ? Response.error() : Response.ok();
     }

@@ -24,7 +24,8 @@ import java.io.UnsupportedEncodingException;
 
 /**
  * rabbitMq的配置
- * @author  Vincent
+ *
+ * @author Vincent
  */
 @Configuration
 public class RabbitMqConfig {
@@ -34,12 +35,14 @@ public class RabbitMqConfig {
     public final static String TOPLINE_ROUTINGKEY = "top.line.routingKey";
 
     private String DEMO_QUEUE = "cool.quartz.queue.demo";
-    private String DEMO_EXCHANGE = "cool.quartz.exchange.demo";;
+    private String DEMO_EXCHANGE = "cool.quartz.exchange.demo";
+    ;
     private String DEMO_ROUTINGKEY = "cool.quartz.routingKey.demo";
 
     private String TASK_QUEUE = "cool.quartz.queue.task";
     private String TASK_EXCHANGE = "cool.quartz.exchange.task";
-    private String TASK_ROUTINGKEY = "cool.quartz.routingKey.task";;
+    private String TASK_ROUTINGKEY = "cool.quartz.routingKey.task";
+    ;
 
 
     @Resource
@@ -57,7 +60,7 @@ public class RabbitMqConfig {
     }
 
     @Bean("rabbitPush")
-    public RabbitTemplate createTopLineRabbitPush(){
+    public RabbitTemplate createTopLineRabbitPush() {
         RabbitTemplate rabbitTemplate = new RabbitTemplate();
         rabbitTemplate.setConnectionFactory(factory);
         return rabbitTemplate;
@@ -66,17 +69,17 @@ public class RabbitMqConfig {
     /***************************************************topLine*********************************************************/
 
     @Bean
-    public DirectExchange topDirectExchange(){
+    public DirectExchange topDirectExchange() {
         return new DirectExchange(TOPLINE_EXCHANGE);
     }
 
     @Bean
-    public Queue topQueue(){
+    public Queue topQueue() {
         return new Queue(TOPLINE_QUEUE);
     }
 
     @Bean
-    public Binding topBinding(){
+    public Binding topBinding() {
         return BindingBuilder.bind(topQueue()).to(topDirectExchange()).with(TOPLINE_ROUTINGKEY);
     }
 
@@ -136,8 +139,8 @@ public class RabbitMqConfig {
 
 
     /*
-      *=====================================================task========================================================
-      * */
+     *=====================================================task========================================================
+     * */
     @Resource
     private Queue taskQueue;
 

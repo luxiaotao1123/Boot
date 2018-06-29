@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 /**
  * 传输的数据格式
+ *
  * @Auth Vincent
  */
 public class TransferData implements Serializable {
@@ -31,7 +32,7 @@ public class TransferData implements Serializable {
 
     public String getData() {
         if (data.startsWith(START_SING)) {
-            data = data.substring(1, data.length() - 1).replaceAll("\\\\","");
+            data = data.substring(1, data.length() - 1).replaceAll("\\\\", "");
         }
         return data;
     }

@@ -12,17 +12,17 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class BootApplicationTests {
 
-	@Autowired
-	private TaskServer taskServer;
+    @Autowired
+    private TaskServer taskServer;
 
-	@Test
-	public void contextLoads() {
-		Task task = new Task();
-		task.setTaskName("demo:231321");
-		task.setExecuteTime("0 48 13 16 5 ? ");
-		task.setParams("{'msg':'demo:231321','code':500}");
-		taskServer.saveTask(task);
-		System.out.println("ok");
-	}
+    @Test
+    public void contextLoads() {
+        Task task = new Task();
+        task.setTaskName("demo:231321");
+        task.setExecuteTime("0 48 13 16 5 ? ");
+        task.setParams("{'msg':'demo:231321','code':500}");
+        taskServer.saveTask(task);
+        System.out.println("ok");
+    }
 
 }

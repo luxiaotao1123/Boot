@@ -17,12 +17,12 @@ public class UrlObserver implements Observer {
 
         String url = urlReq.poll();
 
-        if (url == null){
+        if (url == null) {
 
             return res;
         }
 
-        log.warn("将要爬取url={}数据",url);
+        log.warn("将要爬取url={}数据", url);
 
         //todo
 

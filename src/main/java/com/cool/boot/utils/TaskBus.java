@@ -121,7 +121,6 @@ public class TaskBus {
             logger.info("初始化定时任务success...");
 
 
-
         } catch (Exception e) {
             logger.warn("初始化定时任务失败", e);
             throw new RuntimeException(e);

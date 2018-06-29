@@ -17,15 +17,15 @@ public class UrlSubject extends Subject {
 
     }
 
-    public boolean addUrl(String url){
+    public boolean addUrl(String url) {
 
         boolean res = Boolean.FALSE;
 
-        if (!urlReq.offer(url)){
+        if (!urlReq.offer(url)) {
             return res;
         }
 
-        if (!this.urlNotify()){
+        if (!this.urlNotify()) {
             return res;
         }
 

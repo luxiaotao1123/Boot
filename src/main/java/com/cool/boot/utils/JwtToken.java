@@ -28,8 +28,9 @@ public class JwtToken {
 
     /**
      * 生成token
-     * @param id  用户id
-     * @return  token
+     *
+     * @param id 用户id
+     * @return token
      */
     public static String toToken(Integer id) {
         id = Optional.ofNullable(id).orElse(-1);
@@ -48,6 +49,7 @@ public class JwtToken {
 
     /**
      * 加密token
+     *
      * @param arg arg
      * @return
      */
@@ -67,11 +69,11 @@ public class JwtToken {
     }
 
 
-
     /**
      * 解密token
+     *
      * @param token token
-     * @return  id
+     * @return id
      */
     public static Integer parseToken(String token) {
         if (token == null || token.length() == 0) {
@@ -102,7 +104,7 @@ public class JwtToken {
             return null;
         }
 
-        return (Integer)res;
+        return (Integer) res;
 
     }
 

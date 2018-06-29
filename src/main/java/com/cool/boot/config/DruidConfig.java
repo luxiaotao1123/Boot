@@ -14,27 +14,27 @@ import org.springframework.context.annotation.Configuration;
 public class DruidConfig {
 
     @Bean
-    public ServletRegistrationBean statViewServlet(){
+    public ServletRegistrationBean statViewServlet() {
         ServletRegistrationBean servletRegistrationBean =
-                new ServletRegistrationBean(new StatViewServlet(),"/druid/*");
+                new ServletRegistrationBean(new StatViewServlet(), "/druid/*");
         //IP白名单
-        servletRegistrationBean.addInitParameter("allow","192.168.0.100,127.0.0.1");
+        servletRegistrationBean.addInitParameter("allow", "192.168.0.100,127.0.0.1");
         //IP黑名单 （共同存在时 deny 优先于 allow）
-        servletRegistrationBean.addInitParameter("deny","192.168.0.100");
-        servletRegistrationBean.addInitParameter("loginPassword","12345678");
+        servletRegistrationBean.addInitParameter("deny", "192.168.0.100");
+        servletRegistrationBean.addInitParameter("loginPassword", "12345678");
         //是否能重置数据
-        servletRegistrationBean.addInitParameter("resertEnable","false");
+        servletRegistrationBean.addInitParameter("resertEnable", "false");
         return servletRegistrationBean;
     }
 
     @Bean
-    public FilterRegistrationBean statFilter(){
+    public FilterRegistrationBean statFilter() {
         FilterRegistrationBean filterRegistrationBean =
                 new FilterRegistrationBean(new WebStatFilter());
         //添加过滤规则
         filterRegistrationBean.addUrlPatterns("/*");
         //忽略过滤格式
-        filterRegistrationBean.addInitParameter("exclusions","*.js,*.gif,*.jpg,*.png,*.css,*.ioc,/druid/*");
+        filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ioc,/druid/*");
         return filterRegistrationBean;
     }
 }

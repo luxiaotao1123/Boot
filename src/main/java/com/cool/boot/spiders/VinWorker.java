@@ -11,7 +11,7 @@ import java.net.URLConnection;
 @Service("vinWorker")
 public class VinWorker {
 
-    public String getCode(String url){
+    public String getCode(String url) {
 
         StringBuilder res = new StringBuilder();
         BufferedReader in = null;
@@ -23,7 +23,7 @@ public class VinWorker {
             connection.connect();
             in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
-            while ((line = in.readLine()) != null){
+            while ((line = in.readLine()) != null) {
                 res.append(line);
                 res.append("\n");
             }
@@ -33,10 +33,10 @@ public class VinWorker {
         } finally {
 
             try {
-                if (in != null){
+                if (in != null) {
                     in.close();
                 }
-            }catch (Exception ignore){
+            } catch (Exception ignore) {
             }
         }
 

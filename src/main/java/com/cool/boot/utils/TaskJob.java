@@ -19,6 +19,7 @@ import java.util.Collection;
 
 /**
  * timerTask的具体实现子类
+ *
  * @Auth Vincent
  */
 @Component
@@ -44,7 +45,7 @@ public class TaskJob implements Job {
             TransferData transferData = new TransferData();
             transferData.setData(task.getParams());
             String params = task.getParams();
-            if (params.contains(TaskTypeEnum.DEMO_KEY.getValue())){
+            if (params.contains(TaskTypeEnum.DEMO_KEY.getValue())) {
                 transferData.setRabbitTypeEnum(RabbitTypeEnum.DEMO);
             }
             rabbitMqPublish.publish(transferData);
