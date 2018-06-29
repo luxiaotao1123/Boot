@@ -49,23 +49,35 @@ public class OkHttpUtils {
 
     }
 
-    public static void main(String[] args) {
-        OkHttpUtils okHttpUtils = new OkHttpUtils();
-        ExecutorService pool = Executors.newFixedThreadPool(5);
+    public static void main(String[] args) throws InterruptedException {
+//        OkHttpUtils okHttpUtils = new OkHttpUtils();
+//        ExecutorService pool = Executors.newFixedThreadPool(5);
+//
+//        for (int i =1;i<=18;i++){
+////            if (i == 3){
+////                Thread.sleep(1500);
+////            }
+//            pool.execute(okHttpUtils.new MyThread(i));
+//        }
+//
+//
+//        pool.shutdown();
 
+        for (int i =1;i<=18;i++) {
 
-        for (int i =0;i<20;i++){
-            pool.execute(okHttpUtils.new MyThread());
+            System.out.println(toGet("http://localhost:9090/user/test/"+i));
         }
-
-        pool.shutdown();
     }
 
     class MyThread implements Runnable{
+        private int i;
+        public MyThread(int i){
+            this.i = i;
+        }
 
         @Override
         public void run() {
-            System.out.println(toGet("http://localhost:9090/user/test"));
+            System.out.println(toGet("http://localhost:9090/user/test/"+this.i));
 
         }
     }
