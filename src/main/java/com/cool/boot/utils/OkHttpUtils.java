@@ -7,6 +7,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -49,24 +50,34 @@ public class OkHttpUtils {
 
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws Exception {
 //        OkHttpUtils okHttpUtils = new OkHttpUtils();
-//        ExecutorService pool = Executors.newFixedThreadPool(5);
+//        ExecutorService pool = Executors.newFixedThreadPool(10);
 //
-//        for (int i =1;i<=18;i++){
-////            if (i == 3){
-////                Thread.sleep(1500);
-////            }
+//        for (int i =1;i<=10;i++){
+//
 //            pool.execute(okHttpUtils.new MyThread(i));
 //        }
-//
-//
 //        pool.shutdown();
 
-        for (int i =1;i<=18;i++) {
+//        for (int i =1;i<=18;i++) {
+//            System.out.println(toGet("http://localhost:9090/user/test/"+1));
+//        }
 
-            System.out.println(toGet("http://localhost:9090/user/test/"+i));
+        String key = "luxiaotaozhangsh";
+        String params = "name=luxiaotao&pwd====xltys1995==&timestamp="+String.valueOf(System.currentTimeMillis());
+
+        String sign = AES.Encrypt(params,key);
+        System.out.println(sign);
+        String url = "http://localhost:9090/api/dsada";
+        Map map = new HashMap();
+        map.put("appid","0331");
+        map.put("sign",sign);
+        if (sign.contains("+")){
+            System.out.println("有+");
         }
+        System.out.println(toPost(url, map));
+
     }
 
     class MyThread implements Runnable{
@@ -82,4 +93,11 @@ public class OkHttpUtils {
         }
     }
 
+    public Boolean wda(){
+        try {
+            return Boolean.TRUE;
+        }finally {
+            System.out.println("===");
+        }
+    }
 }
