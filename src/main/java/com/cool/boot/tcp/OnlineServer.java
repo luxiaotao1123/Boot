@@ -20,8 +20,7 @@ import javax.annotation.PreDestroy;
 
 
 /**
- * TCP长连接Server
- *
+ * Netty Server
  * @author Vincent
  */
 @Component
@@ -30,20 +29,16 @@ public class OnlineServer {
 
     @Value("${tcp.port}")
     private int port;
-
     private Channel channel;
     private EventLoopGroup bossGroup;
     private EventLoopGroup workerGroup;
 
     @PostConstruct
     public void serverStart() throws InterruptedException {
-
         bossGroup = new NioEventLoopGroup(1);
         workerGroup = new NioEventLoopGroup();
         ServerBootstrap bootstrap = new ServerBootstrap();
-
-        bootstrap
-                .group(bossGroup, workerGroup)
+        bootstrap.group(bossGroup, workerGroup)
                 .channel(NioServerSocketChannel.class)
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     @Override
@@ -56,28 +51,21 @@ public class OnlineServer {
                 })
                 .option(ChannelOption.SO_BACKLOG, 128)
                 .childOption(ChannelOption.SO_KEEPALIVE, true);
-
         log.warn("TCP长连接服务端已启动,端口号为：{}", port);
-
         channel = bootstrap.bind(port).sync().channel();
-
     }
 
     @PreDestroy
     public void destroy() {
-
         if (channel != null && channel.isActive()) {
             channel.close();
         }
-
         if (bossGroup != null) {
             bossGroup.shutdownGracefully();
         }
-
         if (workerGroup != null) {
             workerGroup.shutdownGracefully();
         }
-
         log.warn("TCP长连接服务端已关闭");
     }
 }

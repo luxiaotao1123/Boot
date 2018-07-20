@@ -51,53 +51,27 @@ public class OkHttpUtils {
     }
 
     public static void main(String[] args) throws Exception {
-//        OkHttpUtils okHttpUtils = new OkHttpUtils();
-//        ExecutorService pool = Executors.newFixedThreadPool(10);
-//
-//        for (int i =1;i<=10;i++){
-//
-//            pool.execute(okHttpUtils.new MyThread(i));
-//        }
-//        pool.shutdown();
+        OkHttpUtils okHttpUtils = new OkHttpUtils();
+        ExecutorService pool = Executors.newFixedThreadPool(5);
 
-//        for (int i =1;i<=18;i++) {
-//            System.out.println(toGet("http://localhost:9090/user/test/"+1));
-//        }
+        for (int i =1;i<=10;i++){
 
-        String key = "luxiaotaozhangsh";
-        String params = "name=luxiaotao&pwd====xltys1995==&timestamp="+String.valueOf(System.currentTimeMillis());
-
-        String sign = AES.Encrypt(params,key);
-        System.out.println(sign);
-        String url = "http://localhost:9090/api/dsada";
-        Map map = new HashMap();
-        map.put("appid","0331");
-        map.put("sign",sign);
-        if (sign.contains("+")){
-            System.out.println("有+");
+            pool.execute(okHttpUtils.new MyThread());
         }
-        System.out.println(toPost(url, map));
+        pool.shutdown();
 
     }
 
     class MyThread implements Runnable{
-        private int i;
-        public MyThread(int i){
-            this.i = i;
-        }
-
         @Override
         public void run() {
-            System.out.println(toGet("http://localhost:9090/user/test/"+this.i));
-
+            String url = "http://localhost:9090/api/user/test";
+            Map map = new HashMap();
+            map.put("appid","luxiaotao1123");
+            map.put("sign","AgQBSFnybeNzHO/JWHZiWdgK+8BxPFH2okEEtt3gRvwS1uQ70oSQ1S8Bj+qSgBbyxnqZ5fyvuGb+LZr8ZkUMA8i+AIb8xBJJJ57MhNX54kU=");
+            map.put("timestamp","1531207583132");
+            System.out.println(toPost(url, map));
         }
     }
 
-    public Boolean wda(){
-        try {
-            return Boolean.TRUE;
-        }finally {
-            System.out.println("===");
-        }
-    }
 }

@@ -1,22 +1,27 @@
 package com.cool.boot.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.cool.boot.entity.Response;
 import com.cool.boot.service.OAuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import static com.cool.boot.config.RabbitMqConfig.TOPLINE_EXCHANGE;
+import static com.cool.boot.config.RabbitMqConfig.TOPLINE_ROUTINGKEY;
+
 /**
  * @author Vincent
  * 2018-5-6
  */
-
 @RestController
 @RequestMapping("user")
 public class OAuthController {
 
     @Autowired
     private OAuthService oAuthService;
-
 
     /**
      * 给予授权
@@ -72,5 +77,19 @@ public class OAuthController {
                                  @RequestParam(value = "grant_type", required = false) String grantType) {
 
         return oAuthService.refreshToken(clientId, refreshToken, grantType);
+    }
+
+    @PostMapping("test")
+    public String test(@RequestParam String name, @RequestParam String pwd) throws Exception{
+        System.out.println("===================================");
+        System.out.println("name:" + name + ",pwd:" + pwd);
+        System.out.println("===================================");
+        return "ok";
+    }
+
+    @PostMapping("test1")
+    public String test1(@RequestParam Double param){
+        System.out.println(param);
+        return "ok";
     }
 }
