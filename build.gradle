@@ -61,4 +61,7 @@ dependencies {
     compile group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.6.0'
     compile group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.4.10'
     compile 'org.projectlombok:lombok:1.16.14'
+    compile group: 'io.protostuff', name: 'protostuff-runtime', version: '1.6.0'
+    testCompile group: 'io.protostuff', name: 'protostuff-core', version: '1.6.0'
+
 }

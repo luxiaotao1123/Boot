@@ -129,15 +129,17 @@ public class Task implements Serializable {
         this.deleted = deleted;
     }
 
-
     @Override
     public String toString() {
-        return "TimeTask{" +
+        return "Task{" +
                 "id=" + id +
                 ", scheduleTaskIndex='" + scheduleTaskIndex + '\'' +
                 ", taskName='" + taskName + '\'' +
                 ", executeTime='" + executeTime + '\'' +
                 ", params='" + params + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", deleted=" + deleted +
                 ", scheduleOperaEnum=" + scheduleOperaEnum +
                 '}';
     }
