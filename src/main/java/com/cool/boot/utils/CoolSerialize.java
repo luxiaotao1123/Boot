@@ -5,8 +5,6 @@ import io.protostuff.ProtostuffIOUtil;
 import io.protostuff.Schema;
 import io.protostuff.runtime.RuntimeSchema;
 
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * serialize tool
@@ -16,12 +14,6 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @SuppressWarnings("unchecked")
 public final class CoolSerialize {
-
-    private static Map<Class<?>, Schema<?>> cachedSchema;
-
-    static {
-        cachedSchema = new ConcurrentHashMap<>();
-    }
 
     private CoolSerialize(){
     }
@@ -33,7 +25,10 @@ public final class CoolSerialize {
         Class<T> cls = (Class<T>) obj.getClass();
         LinkedBuffer buffer = LinkedBuffer.allocate(LinkedBuffer.DEFAULT_BUFFER_SIZE);
         try {
-            Schema<T> schema = getSchema(cls);
+            Schema<T> schema = RuntimeSchema.getSchema(cls);
+            if (schema == null){
+                schema = RuntimeSchema.createFrom(cls);
+            }
             return ProtostuffIOUtil.toByteArray(obj, schema, buffer);
         } catch (Exception e) {
             throw new IllegalStateException(e.getMessage(), e);
@@ -46,25 +41,17 @@ public final class CoolSerialize {
      *  analyze serialize
      */
     public static <T> T deserialize(byte[] data, Class<T> cls){
-        Schema<T> schema = (Schema<T>) cachedSchema.get(cls);
-        if (schema == null){
-            return null;
+        try {
+            Schema<T> schema = RuntimeSchema.getSchema(cls);
+            if (schema == null){
+                return null;
+            }
+            T message = schema.newMessage();
+            ProtostuffIOUtil.mergeFrom(data, message, schema);
+            return message;
+        } catch (Exception e) {
+            throw new IllegalStateException(e.getMessage(), e);
         }
-        T message = schema.newMessage();
-        ProtostuffIOUtil.mergeFrom(data, message, schema);
-        return message;
-    }
-
-    /**
-     *  create schema
-     */
-    private static <T> Schema<T> getSchema(Class<T> cls){
-        Schema<T> schema = (Schema<T>) cachedSchema.get(cls);
-        if (schema == null){
-            schema = RuntimeSchema.createFrom(cls);
-            cachedSchema.put(cls, schema);
-        }
-        return schema;
     }
 
 }
