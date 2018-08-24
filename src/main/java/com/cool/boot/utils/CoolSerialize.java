@@ -12,7 +12,6 @@ import io.protostuff.runtime.RuntimeSchema;
  * @wechat luxiaotao1123
  * @data 2018/8/24
  */
-@SuppressWarnings("unchecked")
 public final class CoolSerialize {
 
     private CoolSerialize(){
@@ -21,6 +20,7 @@ public final class CoolSerialize {
     /**
      *  serialize init
      */
+    @SuppressWarnings("unchecked")
     public static <T> byte[] serialize(T obj){
         Class<T> cls = (Class<T>) obj.getClass();
         LinkedBuffer buffer = LinkedBuffer.allocate(LinkedBuffer.DEFAULT_BUFFER_SIZE);
